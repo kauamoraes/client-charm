@@ -19,6 +19,7 @@ export function Projecs() {
         project.description.toLowerCase().includes(search.toLowerCase())
     );
 
+    //Now switch
     function handleAddProject() {
         const newProject = {
             id: Date.now(),
