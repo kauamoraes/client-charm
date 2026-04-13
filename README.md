@@ -597,7 +597,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para d
 
 ## 👨‍💻 Desenvolvedor
 
-Desenvolvido com ❤️ em 2026
+Desenvolvido por Kauã em 2026
 
 ---
 
