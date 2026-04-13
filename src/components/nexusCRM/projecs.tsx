@@ -4,10 +4,14 @@ import { useState } from "react";
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
 import { Button } from "../ui/button";
-import { useProjects } from "../../../context/ProjectsContext";
+import { useProjects } from "../../context/ProjectsContext";
+import { useClients } from "@/context/clientsContext";
+
 
 export function Projecs() {
     const { projects, setProjects } = useProjects();
+    const { clients: clientsList } = useClients()
+
     const [search, setSearch] = useState("");
     const [name, setName] = useState("")
     const [clients, setClients] = useState("")
@@ -93,9 +97,11 @@ export function Projecs() {
                                                     Clientes
                                                 </SelectLabel>
 
-                                                <SelectItem value="apple">Apple</SelectItem>
-                                                <SelectItem value="banana">Banana</SelectItem>
-                                                <SelectItem value="blueberry">Blueberry</SelectItem>
+                                                {clientsList.map((client) => (
+                                                    <SelectItem key={client.id} value={client.name}>
+                                                        {client.name} - {client.company}
+                                                    </SelectItem>
+                                                ))}
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>

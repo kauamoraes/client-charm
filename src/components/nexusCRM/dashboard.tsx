@@ -2,10 +2,34 @@ import { DollarSign, FolderKanban, SquareCheckBig } from "lucide-react";
 import { AsideBar } from "./asideBar";
 import { BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
 import { ChartContainer } from "@/components/ui/chart";
-import { useProjects } from "../../../context/ProjectsContext";
+import { useProjects } from "../../context/ProjectsContext";
+import { useFinance } from "@/context/FinanceContext";
 
 export function Dashboard() {
     const { projects } = useProjects();
+    const { accounts } = useFinance();
+
+    // Filtrar tarefas que estão em progresso
+    const tasksInProgress = projects.filter(project => project.status === "Em andamento");
+
+    // Calcular saldo: entradas - saídas
+    const incoming = accounts
+        .filter(acc => acc.type === "a-receber")
+        .reduce((sum, acc) => sum + acc.amount, 0);
+
+    const outgoing = accounts
+        .filter(acc => acc.type === "a-pagar")
+        .reduce((sum, acc) => sum + acc.amount, 0);
+
+    const balance = incoming - outgoing;
+
+    const formatCurrency = (value: number) => {
+        return new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        }).format(value);
+    };
+
     const data = [
         { month: 'Jan', revenue: 4000 },
         { month: 'Feb', revenue: 3000 },
@@ -48,7 +72,7 @@ export function Dashboard() {
                             <p className="text-gray-400">Faturamento do (mês) </p>
                             <DollarSign className="text-green-600" />
                         </div>
-                        <h2 className="text-white mt-4 font-bold text-3xl">R$5.000</h2>
+                        <h2 className="text-white mt-4 font-bold text-3xl">{formatCurrency(balance)}</h2>
                     </section>
 
                     <section className="rounded-md w-auto p-4 bg-[#111827]">
@@ -64,7 +88,7 @@ export function Dashboard() {
                             <p className="text-gray-400">Tarefas pendentes</p>
                             <SquareCheckBig className="text-yellow-400" />
                         </div>
-                        <h2 className="text-white mt-4 font-bold text-3xl">9</h2>
+                        <h2 className="text-white mt-4 font-bold text-3xl">{tasksInProgress.length}</h2>
                     </section>
                 </section>
 

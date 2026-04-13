@@ -8,8 +8,12 @@ import NotFound from "./pages/NotFound.tsx";
 
 import { Dashboard } from "./components/nexusCRM/dashboard.tsx";
 import { Projecs } from "./components/nexusCRM/projecs.tsx";
-import { AsideBar } from "./components/nexusCRM/asideBar.tsx";
-import { ProjectsProvider } from "../context/ProjectsContext.tsx";
+import { ProjectsProvider } from "./context/ProjectsContext.tsx";
+import { ClientsProvider } from "./context/clientsContext.tsx";
+import { FinanceProvider } from "./context/FinanceContext.tsx";
+import { Tasks } from "./components/nexusCRM/tasks.tsx";
+import { Clients } from "./components/nexusCRM/clients.tsx";
+import { Finance } from "./components/nexusCRM/finance.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,18 +21,25 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <ProjectsProvider>
-        <Toaster />
-        <Sonner />
+        <ClientsProvider>
+          <FinanceProvider>
+            <Toaster />
+            <Sonner />
 
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/nexus/dashboard" element={<Dashboard />} />
-            <Route path="/nexus/dashboard/home" element={<Dashboard />} />
-            <Route path="/nexus/dashboard/projects" element={<Projecs />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/nexus/dashboard" element={<Dashboard />} />
+                <Route path="/nexus/dashboard/home" element={<Dashboard />} />
+                <Route path="/nexus/dashboard/projects" element={<Projecs />} />
+                <Route path="/nexus/dashboard/tasks" element={<Tasks />} />
+                <Route path="/nexus/dashboard/clients" element={<Clients />} />
+                <Route path="/nexus/dashboard/finance" element={<Finance />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </FinanceProvider>
+        </ClientsProvider>
       </ProjectsProvider>
     </TooltipProvider>
   </QueryClientProvider>

@@ -26,7 +26,7 @@ export function ProjectsProvider({ children }: { children: ReactNode }) {
             progress: 90,
             hours: "18h/20",
             deadline: "14/04/2026",
-            status: "Em andamento"
+            status: "Em andamento",
         },
         {
             id: 2,
@@ -35,7 +35,7 @@ export function ProjectsProvider({ children }: { children: ReactNode }) {
             progress: 75,
             hours: "15h/20",
             deadline: "15/04/2026",
-            status: "Em andamento"
+            status: "Em andamento",
         },
         {
             id: 3,
@@ -44,8 +44,17 @@ export function ProjectsProvider({ children }: { children: ReactNode }) {
             progress: 60,
             hours: "12h/20",
             deadline: "20/04/2026",
-            status: "Em andamento"
+            status: "Em andamento",
         },
+        {
+            id: 4,
+            name: "Sistema de Gerenciamento",
+            description: "Plataforma de Gestão",
+            progress: 45,
+            hours: "9h/20",
+            deadline: "25/04/2026",
+            status: "Em andamento",
+        }
     ]);
 
     return (

@@ -7,7 +7,8 @@ export function AsideBar() {
     const [colapsed, setColapsed] = useState(false)
 
     return (
-        <div className={`h-screen bg-[#111827] p-4 transition-all duration-300 ${colapsed ? "w-[100px] " : "w-[250px]"
+        
+        <div className={`h-screen bg-[#111827] text-nowrap p-4 transition-all duration-300 ${colapsed ? "w-[100px] " : "w-[250px]"
             }`}>
             <section>
                 <section className="flex items-center gap-2 ">
@@ -63,7 +64,7 @@ export function AsideBar() {
                             </div>
 
                             {!colapsed && (
-                                <Link to="#">Tarefas</Link>
+                                <Link to="/nexus/dashboard/tasks">Tarefas</Link>
                             )}
                         </li>
 
@@ -75,7 +76,7 @@ export function AsideBar() {
                             </div>
 
                             {!colapsed && (
-                                <Link to="#">Clientes</Link>
+                                <Link to="/nexus/dashboard/clients">Clientes</Link>
 
                             )}
                         </li>
@@ -88,7 +89,7 @@ export function AsideBar() {
                             </div>
 
                             {!colapsed && (
-                                <Link to="#">Financeiro</Link>
+                                <Link to="/nexus/dashboard/finance">Financeiro</Link>
                             )}
                         </li>
                     </ul>
