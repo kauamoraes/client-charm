@@ -438,26 +438,6 @@ interface FinanceContextType {
 
 ---
 
-## 📱 Responsividade
-
-O projeto é **100% responsivo** para todos os tamanhos de tela:
-
-| Dispositivo | Breakpoint     | Suporte     |
-| ----------- | -------------- | ----------- |
-| 📱 Mobile   | 320px - 767px  | ✅ Completo |
-| 💻 Tablet   | 768px - 1023px | ✅ Completo |
-| 🖥️ Desktop  | 1024px+        | ✅ Completo |
-
-**Breakpoints Tailwind:**
-
-- `sm:` 640px
-- `md:` 768px
-- `lg:` 1024px
-- `xl:` 1280px
-- `2xl:` 1536px
-
----
-
 ## 🚀 Scripts Disponíveis
 
 ```bash
